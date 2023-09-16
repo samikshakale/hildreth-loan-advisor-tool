@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello HTML Templates</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+<div>
+
+    <h1>This is the results page</h1>
+
+    <p>This is the company:  {{ company }} </p>
+    <p>This is the start date:  {{ start_date }} </p>
+    <p>This is the end date :  {{ end_date }} </p> 
+
+    <p>
+        Here is the dataframe
+    </p>
+    {% for table in tables %}
+        <table>
+            <thead>
+                <tr>
+                    {% for title in titles %}
+                        <th>{{ title }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {{ table|safe }}
+            </tbody>
+        </table>
+    {% endfor %}
+</div>
+
+
+</body>
+</html>
